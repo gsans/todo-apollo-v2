@@ -2,6 +2,8 @@
 
 <img src="https://image.ibb.co/dsnDsb/ezgif_com_video_to_gif_40.gif"/>
 
+<img src="https://image.ibb.co/gb6dQw/ezgif_com_video_to_gif_42.gif">
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
