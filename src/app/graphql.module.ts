@@ -32,12 +32,12 @@ export class GraphQLModule {
   private setupLink() {
     // queries and mutations link (http)
     const http = this.httpLink.create({ 
-      uri: 'https://api.graph.cool/simple/v1/cj9kbs62107rc0168xb5s9ghu'
+      uri: 'https://api.graph.cool/simple/v1/ADD_YOUR_API_KEY_HERE'
     });
 
     // subscriptions link (websockets)
     const websocket = new WebSocketLink(
-      new SubscriptionClient('wss://subscriptions.graph.cool/v1/cj9kbs62107rc0168xb5s9ghu', {
+      new SubscriptionClient('wss://subscriptions.graph.cool/v1/ADD_YOUR_API_KEY_HERE', {
         reconnect: true
       })
     );
