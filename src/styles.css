@@ -1,0 +1,15 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  margin: 0px;
+  background-color: #3F51B5;
+}
+
+/* fix very long todo description */
+.mat-list .mat-list-item .mat-list-item-content, .mat-nav-list .mat-list-item .mat-list-item-content, .mat-selection-list .mat-list-item .mat-list-item-content {
+  height: 100% !important; 
+  min-height: 46px;
+}
+.mat-tab-label, .mat-tab-link {
+  font-size: 20px;
+}

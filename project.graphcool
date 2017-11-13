@@ -1,0 +1,25 @@
+# project: cj9kbs62107rc0168xb5s9ghu
+# version: 2
+
+type User @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type File @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String!
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  url: String! @isUnique
+}
+
+type Todo @model {
+  id: ID! @isUnique
+  text: String!
+  complete: Boolean!
+}
