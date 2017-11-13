@@ -1,6 +1,6 @@
 # TodoApolloV2
 
-<img src="https://ibb.co/cada5w"/>
+<img src="https://image.ibb.co/dsnDsb/ezgif_com_video_to_gif_40.gif"/>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
