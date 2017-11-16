@@ -4,28 +4,88 @@
 
 <img src="https://image.ibb.co/gb6dQw/ezgif_com_video_to_gif_42.gif">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+## Technology stack
 
-## Development server
+This application integrates the following technologies:
+- [Apollo Client 2.0](http://dev.apollodata.com) to communicate with GraphQL Server
+- [graphcool](http://graph.cool) providing the GraphQL Server
+- [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+You can add todos and toggle their status. If you open different windows each will be updated accordingly.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development
 
-## Build
+If you have any questions feel free to ping me on [@gerardsans](http://twitter.com/gerardsans).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Install
 
-## Running unit tests
+First, clone the repo via git:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+$ git clone https://github.com/gsans/todo-apollo-v2.git
+```
 
-## Running end-to-end tests
+And then install dependencies:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+$ cd todo-apollo-v2 && npm i
+```
 
-## Further help
+### graphcool GraphQL Server Setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+In order to run this project you need to create the data model (schema) below using [graphcool](http://graph.cool) console online or graphcool CLI. 
+
+## Todo App Schema
+
+This is the schema used
+
+```graphql
+type Todo @model {
+  id: ID! @isUnique
+  text: String!
+  complete: Boolean!
+}
+```
+
+Create a GraphQL Server using this schema and graphcool CLI. On the `todo-apollo-v2` folder run the following commands:
+
+```bash
+$ npm install -g graphcool
+$ graphcool push
+$ graphcool endpoints
+```
+
+### Replace client URIs 
+
+Edit `/src/app/graphql.module.ts` and replace `ADD_YOUR_API_KEY_HERE` with the endpoints from the previous step.
+
+```javascript
+  private setupLink() {
+    // queries and mutations link (http)
+    const http = this.httpLink.create({ 
+      uri: 'https://api.graph.cool/simple/v1/ADD_YOUR_API_KEY_HERE'
+    });
+
+    // subscriptions link (websockets)
+    const websocket = new WebSocketLink(
+      new SubscriptionClient('wss://subscriptions.graph.cool/v1/ADD_YOUR_API_KEY_HERE', {
+        reconnect: true
+      })
+    );
+```
+
+### Run
+```bash
+$ ng serve
+```
+
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+> Note: requires a node version >=6.x
+
+<img src="./src/images/partyparrot.png" />
+
+## License
+MIT © [Gerard Sans](https://github.com/gsans)
